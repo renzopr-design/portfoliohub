@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renzo Pizzini Rocha — Portfólio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --surface2: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #e8e8e8;
+    --muted: #888;
+    --accent: #f0f0f0;
+    --tag-bg: #1e1e1e;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--muted);
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--text);
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--muted);
+  }
+
+  .hero-desc {
+    margin-top: 2.5rem;
+    max-width: 480px;
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.8;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-cta {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-primary {
+    background: var(--text);
+    color: var(--bg);
+    border: 1px solid var(--text);
+  }
+
+  .btn-primary:hover { background: #ccc; border-color: #ccc; }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+
+  .btn-secondary:hover { border-color: var(--muted); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: fadeUp 0.8s 0.5s ease both;
+  }
+
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 3rem;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 6rem 3rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label span {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    color: var(--border);
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 3rem;
+  }
+
+  /* ── SOBRE ── */
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .sobre-text p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+  }
+
+  .sobre-text p strong { color: var(--text); font-weight: 500; }
+
+  .sobre-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    border-radius: 4px;
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.05em;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-label { font-size: 0.8rem; color: var(--muted); }
+
+  /* ── FORMAÇÃO ── */
+  .formacao-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    border-radius: 4px;
+    max-width: 680px;
+  }
+
+  .formacao-inst {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+
+  .formacao-curso {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .tag {
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 2px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── TÉCNICO ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .skill-item {
+    background: var(--surface);
+    padding: 2rem;
+    transition: background 0.2s;
+  }
+
+  .skill-item:hover { background: var(--surface2); }
+
+  .skill-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .skill-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+
+  .skill-level {
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.8rem;
+  }
+
+  .skill-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── PROJETOS ── */
+  .projetos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .projeto-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: border-color 0.2s, transform 0.2s;
+    text-decoration: none;
+  }
+
+  .projeto-card:hover {
+    border-color: var(--muted);
+    transform: translateY(-2px);
+  }
+
+  .projeto-tipo {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .projeto-nome {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .projeto-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .projeto-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .projeto-tech {
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .projeto-arrow {
+    color: var(--muted);
+    font-size: 1rem;
+    transition: transform 0.2s;
+  }
+
+  .projeto-card:hover .projeto-arrow { transform: translate(2px, -2px); }
+
+  /* ── CONTATO ── */
+  .contato-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contato-intro {
+    font-size: 1.1rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .contato-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .contato-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.2s;
+    font-size: 0.9rem;
+  }
+
+  .contato-link:hover { border-color: var(--muted); }
+
+  .contato-link-label { font-weight: 500; }
+  .contato-link-url { font-size: 0.8rem; color: var(--muted); font-family: 'DM Sans', monospace; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 3rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 7rem 1.5rem 4rem; }
+    section { padding: 4rem 1.5rem; }
+    .sobre-grid, .contato-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">RPR</a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#formacao">Formação</a></li>
+    <li><a href="#tecnico">Técnico</a></li>
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-eyebrow">Portfólio Profissional</div>
+  <h1>Renzo<br>Pizzini <em>Rocha</em></h1>
+  <p class="hero-desc">
+    Estudante de Análise e Desenvolvimento de Sistemas no CEUB,
+    construindo um portfólio técnico desde o primeiro semestre.
+  </p>
+  <div class="hero-cta">
+    <a href="#projetos" class="btn btn-primary">Ver projetos</a>
+    <a href="https://github.com/renzopizzini/portfoliohub" target="_blank" class="btn btn-secondary">GitHub ↗</a>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="section-label">
+    <span>01</span> Sobre mim
+  </div>
+  <div class="sobre-grid">
+    <div class="sobre-text reveal">
+      <p>
+        Olá! Sou o <strong>Renzo Pizzini Rocha</strong>, estudante de
+        <strong>Análise e Desenvolvimento de Sistemas</strong> no primeiro
+        semestre do CEUB, em Brasília.
+      </p>
+      <p>
+        Tenho interesse em desenvolvimento de software, lógica de programação
+        e versionamento de código. Desde o início do curso venho construindo
+        projetos práticos que aplicam os conceitos aprendidos em sala de aula.
+      </p>
+      <p>
+        Meu objetivo é entrar no mercado de tecnologia com um portfólio
+        organizado e prático, demonstrando comprometimento e capacidade de
+        aprender rapidamente.
+      </p>
+    </div>
+    <div class="sobre-stats reveal">
+      <div class="stat-card">
+        <div class="stat-num">1°</div>
+        <div class="stat-label">Semestre em ADS — CEUB</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Projetos no portfólio</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">8+</div>
+        <div class="stat-label">Commits no GitHub</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2026</div>
+        <div class="stat-label">Início do curso</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMAÇÃO -->
+<section id="formacao">
+  <div class="section-label"><span>02</span> Formação</div>
+  <div class="section-title reveal">Acadêmica</div>
+  <div class="formacao-card reveal">
+    <div class="formacao-inst">Centro Universitário de Brasília — CEUB / FATECS</div>
+    <div class="formacao-curso">Análise e Desenvolvimento de Sistemas · Início: 2026 · Previsão: 2028 · Brasília, DF</div>
+    <div class="tags">
+      <span class="tag">Lógica de Programação</span>
+      <span class="tag">Matemática para Computação</span>
+      <span class="tag">Fundamentos de TI</span>
+      <span class="tag">Introdução ao Desenvolvimento</span>
+      <span class="tag">Python</span>
+      <span class="tag">Git & GitHub</span>
+    </div>
+  </div>
+</section>
+
+<!-- TÉCNICO -->
+<section id="tecnico">
+  <div class="section-label"><span>03</span> Técnico</div>
+  <div class="section-title reveal">Conhecimentos</div>
+  <div class="skills-grid reveal">
+    <div class="skill-item">
+      <div class="skill-icon">🐍</div>
+      <div class="skill-name">Python</div>
+      <div class="skill-level">Básico</div>
+      <div class="skill-desc">Scripts com while, for, if/else, input/output, funções e estruturas de dados simples.</div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-icon">🔀</div>
+      <div class="skill-name">Git & GitHub</div>
+      <div class="skill-level">Básico / Intermediário</div>
+      <div class="skill-desc">Repositórios, commits semânticos, branches, pull requests e GitHub Pages.</div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-icon">🧠</div>
+      <div class="skill-name">Lógica de Programação</div>
+      <div class="skill-level">Em desenvolvimento</div>
+      <div class="skill-desc">Algoritmos, pseudocódigo, estruturas de repetição e condicionais.</div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-icon">📐</div>
+      <div class="skill-name">Matemática para Computação</div>
+      <div class="skill-level">Em desenvolvimento</div>
+      <div class="skill-desc">Lógica de predicados, tabelas-verdade, teoria dos conjuntos e conectivos lógicos.</div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-icon">🛠️</div>
+      <div class="skill-name">Ferramentas</div>
+      <div class="skill-level">Cotidiano</div>
+      <div class="skill-desc">PyCharm Community, Google Workspace, Moodle / AVA CEUB, VS Code.</div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-icon">🌐</div>
+      <div class="skill-name">Web Básico</div>
+      <div class="skill-level">Básico</div>
+      <div class="skill-desc">HTML, GitHub Pages e Google Sites para publicação de projetos online.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETOS -->
+<section id="projetos">
+  <div class="section-label"><span>04</span> Projetos</div>
+  <div class="section-title reveal">O que construí</div>
+  <div class="projetos-grid">
+
+    <a class="projeto-card reveal" href="https://github.com/renzopizzini/portfoliohub/tree/main/projetos-academicos/logica-de-programacao" target="_blank">
+      <div class="projeto-tipo">Acadêmico · Lógica de Programação</div>
+      <div class="projeto-nome">Prova Prática PP2</div>
+      <div class="projeto-desc">Três exercícios em Python: média de pares e ímpares com while, relatório estatístico de valores reais e sistema de votação presidencial com percentuais.</div>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">while</span>
+        <span class="tag">for</span>
+      </div>
+      <div class="projeto-footer">
+        <span class="projeto-tech">Prof. Barbosa · CEUB</span>
+        <span class="projeto-arrow">↗</span>
+      </div>
+    </a>
+
+    <a class="projeto-card reveal" href="https://github.com/renzopizzini/portfoliohub/tree/main/projetos-academicos/matematica-computacao" target="_blank">
+      <div class="projeto-tipo">Acadêmico · Matemática para Computação</div>
+      <div class="projeto-nome">Simulador de Gerenciamento de Hotel</div>
+      <div class="projeto-desc">Modelagem de 5 regras de um hotel usando lógica de predicados formal. Expressões matemáticas, tabelas-verdade e pseudocódigo para cada desafio.</div>
+      <div class="tags">
+        <span class="tag">Lógica de Predicados</span>
+        <span class="tag">Tabela-Verdade</span>
+        <span class="tag">Pseudocódigo</span>
+      </div>
+      <div class="projeto-footer">
+        <span class="projeto-tech">Prof. Luiz Claudio · CEUB</span>
+        <span class="projeto-arrow">↗</span>
+      </div>
+    </a>
+
+    <a class="projeto-card reveal" href="https://github.com/renzopizzini/portfoliohub" target="_blank">
+      <div class="projeto-tipo">Acadêmico · Fundamentos de TI</div>
+      <div class="projeto-nome">PortfolioHUB — Versionamento</div>
+      <div class="projeto-desc">Repositório público organizado no GitHub com projetos acadêmicos e pessoais. Commits semânticos, branches, pull requests e integração com GitHub Pages.</div>
+      <div class="tags">
+        <span class="tag">Git</span>
+        <span class="tag">GitHub</span>
+        <span class="tag">GitHub Pages</span>
+      </div>
+      <div class="projeto-footer">
+        <span class="projeto-tech">Fundamentos de TI · CEUB</span>
+        <span class="projeto-arrow">↗</span>
+      </div>
+    </a>
+
+    <a class="projeto-card reveal" href="https://github.com/renzopizzini/portfoliohub/tree/main/projetos-pessoais/calculadora-python" target="_blank">
+      <div class="projeto-tipo">Pessoal</div>
+      <div class="projeto-nome">Calculadora Python</div>
+      <div class="projeto-desc">Calculadora com as quatro operações básicas, tratamento de divisão por zero e validação de operação inválida. Projeto desenvolvido por iniciativa própria.</div>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">if/else</span>
+      </div>
+      <div class="projeto-footer">
+        <span class="projeto-tech">Projeto pessoal</span>
+        <span class="projeto-arrow">↗</span>
+      </div>
+    </a>
+
+    <a class="projeto-card reveal" href="https://github.com/renzopizzini/portfoliohub/tree/main/projetos-pessoais/analise-de-dados" target="_blank">
+      <div class="projeto-tipo">Pessoal</div>
+      <div class="projeto-nome">Análise de Valores</div>
+      <div class="projeto-desc">Script que lê valores reais e gera relatório estatístico com quantidade, soma, média aritmética, maior e menor valor e contagem acima de um limite.</div>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">while</span>
+        <span class="tag">Estatística</span>
+      </div>
+      <div class="projeto-footer">
+        <span class="projeto-tech">Projeto pessoal</span>
+        <span class="projeto-arrow">↗</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="section-label"><span>05</span> Contato</div>
+  <div class="section-title reveal">Vamos nos conectar</div>
+  <div class="contato-grid">
+    <div class="contato-intro reveal">
+      Estou disponível para oportunidades de estágio, projetos e
+      conexões na área de tecnologia. Fique à vontade para entrar
+      em contato por qualquer um dos canais abaixo.
+    </div>
+    <div class="contato-links reveal">
+      <a class="contato-link" href="https://github.com/renzopizzini" target="_blank">
+        <div>
+          <div class="contato-link-label">GitHub</div>
+          <div class="contato-link-url">github.com/renzopizzini</div>
+        </div>
+        <span>↗</span>
+      </a>
+      <a class="contato-link" href="https://linkedin.com/in/renzopizzini" target="_blank">
+        <div>
+          <div class="contato-link-label">LinkedIn</div>
+          <div class="contato-link-url">linkedin.com/in/renzopizzini</div>
+        </div>
+        <span>↗</span>
+      </a>
+      <a class="contato-link" href="https://renzopizzini.github.io/portfoliohub" target="_blank">
+        <div>
+          <div class="contato-link-label">Portfólio GitHub Pages</div>
+          <div class="contato-link-url">renzopizzini.github.io/portfoliohub</div>
+        </div>
+        <span>↗</span>
+      </a>
+      <a class="contato-link" href="mailto:renzo.pizzini@sempreceub.com">
+        <div>
+          <div class="contato-link-label">E-mail</div>
+          <div class="contato-link-url">renzo.pizzini@sempreceub.com</div>
+        </div>
+        <span>↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Renzo Pizzini Rocha · ADS — CEUB · 2026</span>
+  <span>github.com/renzopizzini</span>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
